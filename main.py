@@ -2,6 +2,7 @@ import uuid
 
 from core.state import EngineState
 from core.context import ExecutionContext
+from core.logger import write_shadow_log
 from llm.factory import get_llm
 from graph import build_graph
 
@@ -21,6 +22,8 @@ def run_once():
     graph = build_graph(ctx)
     
     final_state = graph.invoke(state)
+
+    write_shadow_log(final_state)
 
     print("\n=== FINAL STATE ===")
     print(final_state)
