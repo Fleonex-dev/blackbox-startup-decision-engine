@@ -14,7 +14,7 @@ def business_evaluator(state: EngineState, context: ExecutionContext) -> EngineS
     Provide your evaluation in the following JSON format:
     {{
         "component": "business",
-        "status": "approved" or "rejected",
+        "status": "PASS" or "KILL",
         "confidence": float between 0 and 1,
         "reason": "detailed explanation"
     }}
@@ -26,7 +26,7 @@ def business_evaluator(state: EngineState, context: ExecutionContext) -> EngineS
     )
 
     eval_result = json.loads(raw_output)
-    
+
     return {
         "business_eval": eval_result
     }

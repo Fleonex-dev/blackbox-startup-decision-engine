@@ -7,9 +7,9 @@ def final_arbiter(state: EngineState) -> EngineState:
     technical = state["technical_eval"]
 
     if(
-        market["status"] == "approved" and
-        business["status"] == "approved" and
-        technical["status"] == "approved"
+        market["status"] == "PASS" and
+        business["status"] == "PASS" and
+        technical["status"] == "PASS"
     ):
         state["final_decision"] = "BUILD"
     else:

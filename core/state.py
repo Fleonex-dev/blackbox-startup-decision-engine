@@ -1,9 +1,13 @@
 #core/state.py
 from typing import TypedDict, Optional, Dict, Any
+from enum import Enum
+class Status(str, Enum):
+    PASS = "PASS"
+    KILL = "KILL"
 
 class EvalResult(TypedDict):
     component: str
-    status: str
+    status: Status
     confidence: float
     reason: str
 
@@ -18,4 +22,3 @@ class EngineState(TypedDict):
     technical_eval: Optional[EvalResult]
 
     final_decision: Optional[str]
-    

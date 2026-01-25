@@ -14,7 +14,7 @@ def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineSta
     Provide your evaluation in the following JSON format:
     {{
         "component": "market",
-        "status": "approved" or "rejected",
+        "status": "PASS" or "KILL",
         "confidence": float between 0 and 1,
         "reason": "detailed explanation"
     }}
@@ -26,7 +26,7 @@ def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineSta
     )
 
     eval_result = json.loads(raw_output)
-    
+
     return {
         "market_eval": eval_result
     }

@@ -14,7 +14,7 @@ def technical_evaluator(state: EngineState, context: ExecutionContext) -> Engine
     Provide your evaluation in the following JSON format:
     {{
         "component": "technical",
-        "status": "approved" or "rejected",
+        "status": "PASS" or "KILL",
         "confidence": float between 0 and 1,
         "reason": "detailed explanation"
     }}
