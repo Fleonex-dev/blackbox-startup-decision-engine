@@ -1,4 +1,4 @@
-# Blackbox Engine — adversarial evaluation engine
+# Blackbox Engine — adversarial evaluation engine 🧭
 
 A stateless, multi-agent adversarial decision framework. The current concrete
 instantiation evaluates B2B startup ideas across market, business, and
@@ -7,7 +7,7 @@ adversarial review workflows.
 
 ---
 
-## What is this?
+## What is this? 🧾
 
 - Core: a compact engine that runs independent evaluators in parallel and
   aggregates their verdicts via deterministic arbitration.
@@ -17,7 +17,7 @@ adversarial review workflows.
 
 ---
 
-## Core engine vs domain evaluators
+## Core engine vs domain evaluators ⚖️
 
 - Core engine (domain-agnostic):
   - Stateless orchestration of state patches returned by nodes.
@@ -32,7 +32,7 @@ adversarial review workflows.
 
 ---
 
-## High-level architecture 🧠
+## High-level architecture 🧠 🔗
 
 - main.py: runner — build context, run compiled StateGraph, persist shadow log.
 - graph.py: graph construction — nodes and edges, entry/finish points.
@@ -44,7 +44,7 @@ Flow: generator → evaluators (parallel) → arbiter → final_decision → sha
 
 ---
 
-## Design principles & invariants
+## Design principles & invariants 🧩 📐
 
 - Explicit contracts:
   - EngineState keys: run_id, brief, market_eval, business_eval,
@@ -60,7 +60,7 @@ Flow: generator → evaluators (parallel) → arbiter → final_decision → sha
 
 ---
 
-## What this intentionally does NOT do
+## What this intentionally does NOT do 🚫
 
 - Not a full LLM orchestration platform (no built-in retries, backoff,
   or comprehensive cost controls in adapters).
@@ -72,7 +72,7 @@ Flow: generator → evaluators (parallel) → arbiter → final_decision → sha
 
 ---
 
-## How to run locally ⚙️
+## How to run locally ⚙️ 🛠️
 
 Prereqs:
 - Python 3.10+, virtualenv, project dependencies (requirements.txt).
@@ -101,7 +101,7 @@ pytest -q
 
 ---
 
-## Observability / shadow logging
+## Observability / shadow logging 🔍 📣
 
 - Each run writes a JSON snapshot to `logs/` (run_id, timestamp, brief,
   market_eval, business_eval, technical_eval, final_decision).
@@ -111,7 +111,7 @@ pytest -q
 
 ---
 
-## Extensibility 🧩
+## Extensibility 🧩 🧪
 
 - Add new domains: implement an agent that returns a partial state patch and
   wire it into `graph.py`.
@@ -124,7 +124,7 @@ pytest -q
 
 ---
 
-## Project status
+## Project status 📈
 
 - v0.1 — intentionally scoped:
   - Core orchestration and graph execution in place.
@@ -137,7 +137,7 @@ pytest -q
 
 ---
 
-## Operational notes
+## Operational notes 📝
 
 - Preserve EngineState and EvalResult shapes; many components rely on them.
 - Treat evaluators as untrusted inputs: validate and sanitize before merge.
