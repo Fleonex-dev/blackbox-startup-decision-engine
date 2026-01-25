@@ -26,5 +26,7 @@ def business_evaluator(state: EngineState, context: ExecutionContext) -> EngineS
     )
 
     eval_result = json.loads(raw_output)
-    state["business_eval"] = eval_result
-    return state
+    
+    return {
+        "business_eval": eval_result
+    }

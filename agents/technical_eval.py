@@ -26,5 +26,7 @@ def technical_evaluator(state: EngineState, context: ExecutionContext) -> Engine
     )
 
     eval_result = json.loads(raw_output)
-    state["technical_eval"] = eval_result
-    return state
+
+    return {
+        "technical_eval": eval_result
+    }

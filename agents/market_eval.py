@@ -26,5 +26,7 @@ def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineSta
     )
 
     eval_result = json.loads(raw_output)
-    state["market_eval"] = eval_result
-    return state
+    
+    return {
+        "market_eval": eval_result
+    }

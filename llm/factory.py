@@ -11,5 +11,30 @@ def get_llm() -> LLMClient:
 
 class MockLLM(LLMClient):
     def generate(self, system: str, user: str) -> str:
-        return "{}"
-    
+       
+       if "market" in system.lower():
+           # Mock market evaluation response
+           return '''{
+               "component": "market",
+               "status": "approved",
+               "confidence": 0.9,
+               "reason": "The market shows strong demand for B2B solutions."
+           }'''
+       elif "technical" in system.lower():
+           # Mock technical evaluation response
+           return '''{
+               "component": "technical",
+               "status": "approved",
+               "confidence": 0.85,
+               "reason": "The technology is feasible with current resources."
+           }'''
+       elif "business" in system.lower():
+           # Mock business evaluation response
+           return '''{
+               "component": "business",
+               "status": "approved",
+               "confidence": 0.8,
+               "reason": "The business model is sustainable and scalable."
+           }'''
+       else:
+           return "{}"    
