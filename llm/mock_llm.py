@@ -1,7 +1,14 @@
 import json
 from llm.base import LLMClient
 
+"""Deterministic mock LLM used for tests and local development.
+
+Returns well-formed JSON aligned with the prompts' expected schema so agents
+can parse without network dependency.
+"""
+
 class MockLLM(LLMClient):
+    # Deterministic mock that returns fixed JSON for prompts.
     def generate(self, system: str, user: str) -> str:
         if "MARKET" in system:
             return json.dumps({

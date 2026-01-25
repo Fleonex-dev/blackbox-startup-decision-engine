@@ -2,8 +2,26 @@ import json
 from core.state import EngineState
 from core.context import ExecutionContext
 
+"""Business evaluator agent.
+
+Evaluates business viability and returns a partial state patch with
+'business_eval'.
+"""
+
 def business_evaluator(state: EngineState, context: ExecutionContext) -> EngineState:
-    
+    """Evaluate business potential and return {'business_eval': eval_result}.
+
+    Inputs:
+    - state: EngineState containing 'brief'
+    - context: ExecutionContext with llm
+
+    Output:
+    - dict with 'business_eval' key mapping to parsed EvalResult
+
+    Assumptions:
+    - The LLM returns well-formed JSON that matches the expected schema.
+    """
+    # Call the business prompt and return {'business_eval': ...}.
     with open("prompts/business.txt", "r") as f:
         system_prompt = f.read()
 

@@ -2,8 +2,27 @@ import json
 from core.state import EngineState
 from core.context import ExecutionContext
 
-def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineState:
+"""Market evaluator agent.
 
+Calls the market-oriented system prompt and returns a partial state patch
+containing 'market_eval'. Agents parse raw LLM output into structured data.
+"""
+
+def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineState:
+    """Evaluate market potential and return {'market_eval': eval_result}.
+
+    Inputs:
+    - state: EngineState with 'brief' present
+    - context: ExecutionContext with llm
+
+    Output:
+    - dict with 'market_eval' key mapping to parsed EvalResult
+
+    Assumptions:
+    - 'brief' exists on state when called.
+    - LLM returns valid JSON matching the expected EvalResult schema.
+    """
+    # Call the market prompt and return {'market_eval': ...}.
     with open("prompts/market.txt", "r") as f:
         system_prompt = f.read()
 

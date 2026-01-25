@@ -2,8 +2,26 @@ import json
 from core.state import EngineState
 from core.context import ExecutionContext
 
-def technical_evaluator(state: EngineState, context: ExecutionContext) -> EngineState:
+"""Technical evaluator agent.
 
+Assesses technical feasibility and returns a partial state patch with
+'technical_eval'.
+"""
+
+def technical_evaluator(state: EngineState, context: ExecutionContext) -> EngineState:
+    """Evaluate technical feasibility and return {'technical_eval': eval_result}.
+
+    Inputs:
+    - state: EngineState with populated 'brief'
+    - context: ExecutionContext with llm
+
+    Output:
+    - dict with 'technical_eval' key mapping to parsed EvalResult
+
+    Assumptions:
+    - The LLM returns valid JSON using the expected keys and casing.
+    """
+    # Call the technical prompt and return {'technical_eval': ...}.
     with open("prompts/technical.txt", "r") as f:
         system_prompt = f.read()
 
