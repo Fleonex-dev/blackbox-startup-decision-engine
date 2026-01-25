@@ -1,4 +1,5 @@
 import uuid
+import json
 
 from core.state import EngineState
 from core.context import ExecutionContext
@@ -18,6 +19,37 @@ Assumptions:
 - Agents return partial state patches that the graph runtime merges into the EngineState.
 - This module performs orchestration only; decision/business logic lives in agents/.
 """
+
+def format_final_state(state: EngineState) -> str:
+    """Produce a display-only JSON string representing final state.
+
+    Responsibility:
+    - Create a deterministic, human-friendly representation of final state
+      for console output without mutating the provided state.
+
+    Inputs:
+    - state: EngineState (read-only for this function)
+
+    Outputs:
+    - JSON string with a consistent layout:
+      { run_id, brief, evaluations: {market,business,technical}, final_decision }
+
+    Important:
+    - Uses json.dumps(..., default=str) to safely serialize enums or unexpected
+      objects for display. This does not change the underlying state.
+    """
+    display_view = {
+        "run_id": state.get("run_id"),
+        "brief": state.get("brief"),
+        "evaluations": {
+            "market": state.get("market_eval"),
+            "business": state.get("business_eval"),
+            "technical": state.get("technical_eval"),
+        },
+        "final_decision": state.get("final_decision")
+    }
+    # Pretty-print for readability; do not mutate state.
+    return json.dumps(display_view, indent=2, ensure_ascii=False, default=str)
 
 def run_once():
     """Run one evaluation pass.
@@ -48,11 +80,12 @@ def run_once():
     
     final_state = graph.invoke(state)
 
-    # Write run snapshot.
+    # Persist a shadow log for debugging/observability.
     write_shadow_log(final_state)
 
+    # Print a structured, readable view of the final state to stdout.
     print("\n=== FINAL STATE ===")
-    print(final_state)
+    print(format_final_state(final_state))
     print("===================\n")
 
 
