@@ -1,6 +1,7 @@
 import json
 from core.state import EngineState
 from core.context import ExecutionContext
+from core.prompts import load_prompt
 
 """Business evaluator agent.
 
@@ -22,8 +23,7 @@ def business_evaluator(state: EngineState, context: ExecutionContext) -> EngineS
     - The LLM returns well-formed JSON that matches the expected schema.
     """
     # Call the business prompt and return {'business_eval': ...}.
-    with open("prompts/business_eval.txt", "r") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt("business_eval.txt")
 
     user_prompt = f"""
     Evaluate the following B2B startup idea for its business potential:

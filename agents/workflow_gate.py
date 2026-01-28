@@ -1,6 +1,7 @@
 import json
 from core.state import EngineState, Status
 from core.context import ExecutionContext
+from core.prompts import load_prompt
 
 """Workflow Reality Gate Agent.
 
@@ -20,8 +21,7 @@ def workflow_gate(state: EngineState, context: ExecutionContext) -> EngineState:
         return state
 
     # Load prompt
-    with open("prompts/workflow_gate.txt", "r") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt("workflow_gate.txt")
 
     # Format brief for the LLM
     brief_str = json.dumps(brief, indent=2)

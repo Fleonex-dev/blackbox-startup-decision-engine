@@ -1,6 +1,7 @@
 import json
 from core.state import EngineState
 from core.context import ExecutionContext
+from core.prompts import load_prompt
 
 """Technical evaluator agent.
 
@@ -22,8 +23,7 @@ def technical_evaluator(state: EngineState, context: ExecutionContext) -> Engine
     - The LLM returns valid JSON using the expected keys and casing.
     """
     # Call the technical prompt and return {'technical_eval': ...}.
-    with open("prompts/technical_eval.txt", "r") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt("technical_eval.txt")
 
     user_prompt = f"""
     Evaluate the following B2B startup idea for its technical potential:

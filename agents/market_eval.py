@@ -1,6 +1,7 @@
 import json
 from core.state import EngineState
 from core.context import ExecutionContext
+from core.prompts import load_prompt
 
 """Market evaluator agent.
 
@@ -23,8 +24,7 @@ def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineSta
     - LLM returns valid JSON matching the expected EvalResult schema.
     """
     # Call the market prompt and return {'market_eval': ...}.
-    with open("prompts/market_eval.txt", "r") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt("market_eval.txt")
 
     user_prompt = f"""
     Evaluate the following B2B startup idea for its market potential:
