@@ -64,7 +64,7 @@ def run_once():
     state: EngineState = {
         # NOTE: current f-string contains a literal; if you want an 8-char hex slice,
         # change to: uuid.uuid4().hex[:8]
-        "run_id": f"run_{uuid.uuid4()}.hex[:8]",
+        "run_id": f"run_{uuid.uuid4().hex[:8]}",
         "brief": None,
         "market_eval": None,
         "business_eval": None,

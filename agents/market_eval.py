@@ -23,7 +23,7 @@ def market_evaluator(state: EngineState, context: ExecutionContext) -> EngineSta
     - LLM returns valid JSON matching the expected EvalResult schema.
     """
     # Call the market prompt and return {'market_eval': ...}.
-    with open("prompts/market.txt", "r") as f:
+    with open("prompts/market_eval.txt", "r") as f:
         system_prompt = f.read()
 
     user_prompt = f"""

@@ -1,5 +1,8 @@
 # Python
 .venv/
+*.md
+!readme.md
+
 __pycache__/
 *.pyc
 

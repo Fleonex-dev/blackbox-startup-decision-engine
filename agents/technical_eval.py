@@ -22,7 +22,7 @@ def technical_evaluator(state: EngineState, context: ExecutionContext) -> Engine
     - The LLM returns valid JSON using the expected keys and casing.
     """
     # Call the technical prompt and return {'technical_eval': ...}.
-    with open("prompts/technical.txt", "r") as f:
+    with open("prompts/technical_eval.txt", "r") as f:
         system_prompt = f.read()
 
     user_prompt = f"""

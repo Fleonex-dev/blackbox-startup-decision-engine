@@ -1,0 +1,80 @@
+[
+  {
+    "id": "bad_idea_1",
+    "expected_verdict": "KILL",
+    "brief": {
+      "concept_hook": "Tinder for Dogs",
+      "target_customer": "Dog Owners",
+      "core_pain_point": "Dogs are lonely",
+      "mechanism": "Mobile app swipe interface",
+      "monetization": "Premium subscription for more swipes",
+      "why_now": "Pet ownership is up",
+      "distribution_channel": "App Store"
+    }
+  },
+  {
+    "id": "bad_idea_2",
+    "expected_verdict": "KILL",
+    "brief": {
+      "concept_hook": "AI Recipe Generator",
+      "target_customer": "Home Cooks",
+      "core_pain_point": "Don't know what to cook",
+      "mechanism": "LLM generates recipes from fridge ingredients",
+      "monetization": "Ads",
+      "why_now": "AI is popular",
+      "distribution_channel": "SEO"
+    }
+  },
+  {
+    "id": "bad_idea_3",
+    "expected_verdict": "KILL",
+    "brief": {
+      "concept_hook": "Blockchain for Medical Records",
+      "target_customer": "Hospitals",
+      "core_pain_point": "Data interoperability",
+      "mechanism": "Decentralized ledger",
+      "monetization": "SaaS fee",
+      "why_now": "Crypto hype",
+      "distribution_channel": "Direct Sales"
+    }
+  },
+  {
+    "id": "bad_idea_4",
+    "expected_verdict": "KILL",
+    "brief": {
+      "concept_hook": "Uber for Lawn Mowing",
+      "target_customer": "Homeowners",
+      "core_pain_point": "Finding a mower",
+      "mechanism": "On-demand booking app",
+      "monetization": "Transaction fee",
+      "why_now": "Gig economy",
+      "distribution_channel": "Flyers"
+    }
+  },
+  {
+    "id": "bad_idea_5",
+    "expected_verdict": "KILL",
+    "brief": {
+      "concept_hook": "Social Network for Introverts",
+      "target_customer": "Introverts",
+      "core_pain_point": "Social anxiety",
+      "mechanism": "Text-only verified app",
+      "monetization": "Freemium",
+      "why_now": "Remote work isolation",
+      "distribution_channel": "Reddit"
+    }
+  },
+  {
+    "id": "good_idea_1",
+    "expected_verdict": "BUILD",
+    "brief": {
+      "concept_hook": "Automated VAT Compliance for SaaS in EU",
+      "target_customer": "US-based SaaS Bootstrappers ($10k-$50k MRR)",
+      "core_pain_point": "Manual quarterly filing in 27 EU countries, risk of fines",
+      "mechanism": "Stripe Connect integration that auto-calculates and files",
+      "monetization": "$49/mo + filing fees",
+      "why_now": "EU crackdown on digital services tax enforcement",
+      "distribution_channel": "Stripe App Marketplace, MicroConf sponsorship"
+    }
+  }
+]

@@ -20,17 +20,23 @@ def final_arbiter(state: EngineState) -> EngineState:
     - Caller ensures evaluators have run before invoking the arbiter.
     """
     # If all evals PASS set BUILD, otherwise set KILL.
-    market = state["market_eval"]
-    business = state["business_eval"]
-    technical = state["technical_eval"]
+    # Sort priorities: KILL > INSUFFICIENT_INFO > PASS
+    evals = [state.get("market_eval"), state.get("business_eval"), state.get("technical_eval")]
+    
+    # Filter out Nones (in case some didn't run, though graph should ensure they do if we reach here)
+    valid_evals = [e for e in evals if e is not None]
 
-    if(
-        market["status"] == "PASS" and
-        business["status"] == "PASS" and
-        technical["status"] == "PASS"
-    ):
+    statuses = [e["status"] for e in valid_evals]
+    
+    if "KILL" in statuses:
+        state["final_decision"] = "KILL"
+    elif "INSUFFICIENT_INFO" in statuses:
+        state["final_decision"] = "INSUFFICIENT_INFO"
+    elif all(s == "PASS" for s in statuses) and len(valid_evals) == 3:
         state["final_decision"] = "BUILD"
     else:
+        # Fallback if something is missing or weird
         state["final_decision"] = "KILL"
+
 
     return state

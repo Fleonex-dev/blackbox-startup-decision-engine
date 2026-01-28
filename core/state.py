@@ -14,6 +14,7 @@ Status enum.
 class Status(str, Enum):
     PASS = "PASS"
     KILL = "KILL"
+    INSUFFICIENT_INFO = "INSUFFICIENT_INFO"
 
 # Evaluator result shape.
 class EvalResult(TypedDict):
@@ -26,7 +27,9 @@ class EvalResult(TypedDict):
 class EngineState(TypedDict):
     run_id: str
     brief: Optional[Dict[str, Any]]
+    workflow_gate_result: Optional[Dict[str, Any]]
     market_eval: Optional[EvalResult]
     business_eval: Optional[EvalResult]
     technical_eval: Optional[EvalResult]
     final_decision: Optional[str]
+    judgment_status: Optional[Status]
