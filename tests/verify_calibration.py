@@ -3,6 +3,11 @@ import asyncio
 from typing import List, Dict
 import os
 import uuid
+import sys
+import os
+
+# Add project root to path so we can import core/agents/etc
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Set provider to mock if not set, or OpenAI if keys are present
 # os.environ["LLM_PROVIDER"] = "openai" # User must set this if they want real evaluation
